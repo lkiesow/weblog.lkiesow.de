@@ -1,0 +1,10 @@
+site_name: lkiesow::weblog
+theme_dir: theme
+
+pages:
+   - "Feb 26, 2016 - Setting up a Weechat Relay Behind NGinx": 20160226-nginx-weechat-relay.md
+   - "Feb 15, 2016 - Raspberry Pi Network Screen Mirroring": 20160215-raspberry-pi-screen-mirroring/index.md
+   - "Jan 24, 2016 - Minimal Responsive Design for Websites": 20160124-minimal-responsive-design.md
+   - "Jan 14, 2016 - Let's Encrypt: Manual Mode, Docker and Nginx": 20160114-letsencrypt.md
+   - "Jan 09, 2016 - Fail2Ban on CentOS 7": 20160109-fail2ban.md
+   - Index: 'index.md'

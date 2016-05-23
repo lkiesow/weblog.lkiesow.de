@@ -1,0 +1,16 @@
+<article>
+	<nav>
+		{% if previous_page %}
+		<a href="{{ previous_page.url }}" title="{{ previous_page.title }}">Previous</a> |
+		{% endif %}
+		{% if next_page %}
+		<a href="{{ next_page.url }}" title="{{ next_page.title }}">Next</a> |
+		{% endif %}
+		<a href=/>Back to the index</a>
+	</nav>
+
+	{% block content %}
+	{{ content }}
+	{% endblock %}
+</article>
+

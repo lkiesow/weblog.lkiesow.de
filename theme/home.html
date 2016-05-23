@@ -1,0 +1,14 @@
+<nav>
+	<form class=search action="{{ base_url }}/search.html" method=get>
+		<input type=text name=q placeholder=" Search blog…" />
+	</form>
+	<h1>Table of Contents</h1>
+	<ul id=toc>
+		{% for nav_item in nav %}
+		{% if nav_item.url != '.' %}
+		{% include "nav.html" %}
+		{% endif %}
+		{% endfor %}
+	</ul>
+	<time>{{ build_date_utc.strftime("%a %b %d %H:%M:%S UTC %Y") }}</time>
+</nav>

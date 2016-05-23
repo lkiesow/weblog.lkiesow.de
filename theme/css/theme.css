@@ -1,0 +1,103 @@
+body {
+	color: #ffffff;
+	background-color: #000000;
+	font-size: 16px;
+	font-family: sans-serif;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+/* Responsive design for smartphones */
+@media only screen and (max-width: 500px) {
+	body {
+		font-size: 22px;
+	}
+	article, nav {
+		text-align: left !important;
+	}
+}
+
+img {
+	border: none;
+	max-width: 70%;
+	margin: 20px auto;
+	display: block;
+}
+
+a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #BBBBBB;
+}
+
+header {
+	color: #333;
+	display: block;
+	margin: 45px auto;
+	max-width: 800px;
+	padding: 10px 30px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 200%;
+}
+
+article, nav {
+	display: block;
+	border: 1px solid #555555;
+	background-color: #222222;
+	margin: 25px;
+	padding: 10px 25px;
+	color: #aaa;
+	text-align: justify;
+}
+
+nav {
+	padding: 25px;
+}
+
+footer {
+	text-align: center;
+	padding: 15px;
+}
+
+pre {
+	padding-left: 20px;
+	margin-left: 10px;
+	border-left: 1px solid #666;
+	font-family: monospace;
+	overflow-y: auto;
+}
+
+.search input {
+	background-color: #222222;
+	border: 1px solid #555;
+	color: silver;
+	display: inline-block;
+}
+
+time {
+	display: block;
+	text-align: right;
+	font-style: italic;
+	opacity: 0.6;
+	padding-top: 10px;
+	border-top: 1px solid gray;
+}
+
+article nav, .search {
+	display: block;
+	text-align: right;
+	font-style: italic;
+	opacity: 0.6;
+	border:none;
+	border-bottom: 1px solid gray;
+	padding: 0px;
+	padding-bottom: 10px;
+}
+
+#toc {
+	line-height: 120%;
+}
