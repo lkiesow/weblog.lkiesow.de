@@ -5,7 +5,7 @@
 <meta name=keywords content="Linux, technology, security" />
 <meta name=viewport content="width=device-width, initial-scale=1">
 
-<title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title>
+<title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
 
 <link rel="shortcut icon" href="{{ base_url }}/favicon.ico">
 <link rel=stylesheet href="{{ base_url }}/css/theme.css">
@@ -17,7 +17,8 @@
 	Lars Kiesow :: Weblog
 </header>
 
-{% if page_title == None %}
+{{ page.title }}
+{% if page.title == "Index" %}
 {% include "home.html" %}
 {% else %}
 {% include "article.html" %}
