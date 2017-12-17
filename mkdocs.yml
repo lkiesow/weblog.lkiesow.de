@@ -2,6 +2,7 @@ site_name: lkiesow::weblog
 theme_dir: theme
 
 pages:
+   - "Dec 16, 2016 - List tags of remote git repository": 20161215-get-git-tags.md
    - "Feb 26, 2016 - Setting up a Weechat Relay Behind NGinx": 20160226-nginx-weechat-relay.md
    - "Feb 15, 2016 - Raspberry Pi Network Screen Mirroring": 20160215-raspberry-pi-screen-mirroring/index.md
    - "Jan 24, 2016 - Minimal Responsive Design for Websites": 20160124-minimal-responsive-design.md
