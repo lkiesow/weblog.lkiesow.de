@@ -1,6 +1,10 @@
 Lenovo Thinkpad BIOS Update With Linux
 ======================================
 
+> Update (2018-08-19): While this should still work, there is now an easier
+> method available. Take a look at [Lenovo Thinkpad BIOS Update Using
+> fwupd](/20180819-easy-thinkpad-bios-update).
+
 *This is for a Thinkpad 470s, but other models should be quite similar.*
 
 Though Thinkpads are popular amound Linux users, unfortunately, Lenono does not
