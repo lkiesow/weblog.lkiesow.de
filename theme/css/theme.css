@@ -10,7 +10,7 @@ body {
 /* Responsive design for smartphones */
 @media only screen and (max-width: 500px) {
 	body {
-		font-size: 22px;
+		font-size: 20px;
 	}
 	article, nav {
 		text-align: left !important;
