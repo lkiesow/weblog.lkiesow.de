@@ -1,7 +1,8 @@
-title: lkiesow::stash
+title: lkiesow::weblog
 description: >
-   Stuff to keep.
-   Without any particular order.
-   Nothing important.
+   Random notes from
+   a security-aware software engineer,
+   open-source advocate
+   and occasional lecturer.
 theme: jekyll-theme-midnight
 show_downloads: false
