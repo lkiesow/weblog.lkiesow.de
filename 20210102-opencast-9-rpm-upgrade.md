@@ -1,7 +1,11 @@
-Upgrade Opencast 8 to Opencast 9 RPM Repository
-===============================================
+Changes to the Opencast RPM Repository Coming with Opencast 9
+=============================================================
 
-The RPM repository changed quite a bit between Opencast 8 and Opencast 9.
+*I've been maintaining the RPM repository for Opencast for about 8 years now.
+In that time, it has become one of the primary ways of installing Opencast.
+In fact, as demonstrated at the last conference, you can do a production ready installation in less than 30min.*
+
+But the RPM repository changed quite a bit between Opencast 8 and Opencast 9.
 This article explains some of these changes in more details than the official documentation.
 It also provides a detailed upgrade guide to Opencast 9.
 
@@ -18,17 +22,18 @@ The biggest change to the repository is that starting with Opencast 9 every majo
 This change tries to prevent accidental updates between versions with breaking changes.
 
 Before, this was achieved by including the major version of Opencast in the package name.
-For example, `opencast8-allinone` was the package name for Opencast 8 allinone distribution.
+For example, `opencast8-allinone` was the package name for the Opencast 8 allinone distribution.
 Running something like `dnf update` would update the package to the latest 8.x release
-but would never automatically update to Opencast 9.
+but would never automatically (accidentally) update to Opencast 9.
 
-Unfortunately, this process is not sufficient for Opencast 9 and longer.
-Opencast 9 is the first version which does not come with an internal Elasticsearch any longer.
-You have to run is as a separate service instead.
-You can also not run any version of Elaticsearch, but one which is compatible with the specific Opencast version.
+Unfortunately, this process is no longer sufficient for Opencast 9.
+Opencast 9 is the first version which does not come with an internal Elasticsearch.
+Instead, you have to run is as a separate service.
+You can also not run any version of Elaticsearch.
+It has to be one which is compatible with the specific Opencast major version.
 
-This means that we would have the same problem with Elasticsearch as with Opencast major updates.
-While we could have solved the problem the same way,
+This means that we now have the same problem with Elasticsearch version, we already have with Opencast major versions.
+And while we could have solved the problem the same way,
 this would have meant that users would need to keep track of the correct versions on their own.
 
 Using separate repositories instead means that you can just install the latest version from that repository
@@ -44,7 +49,7 @@ While this change was done a while ago and also applies to the old repository,
 it is worth mentioning that you do not have to register any longer for the Opencast repository.
 
 In times of automated installs and prepared images to deploy, we felt like this was a relict of the past
-and barely served any purpose any longer.
+and did not serve its original purpose any longer.
 
 
 Using Repository Packages
@@ -60,7 +65,7 @@ Activating the repository on CentOS 8 is a mere:
 % dnf install https://pkg.opencast.org/rpms/release/el/8/oc-09/noarch/opencast-repository-9-0-1.el8.noarch.rpm
 ```
 
-This gives us the flexibility to change things
+This gives us the flexibility to make changes to the repository
 without having to fear that we break the manually crafted repository configuration of all the installations out there.
 
 
@@ -72,7 +77,7 @@ while switching the repository along the way.
 
 
 As usual, first stop Opencast.
-This allows for configuration and dependency updates, without Opencast constantly trying to load and apply potentially broken configuration.
+This allows for configuration and dependency updates without Opencast constantly trying to load and apply potentially broken configuration.
 
 ```sh
 % systemctl stop opencast
@@ -80,7 +85,7 @@ This allows for configuration and dependency updates, without Opencast constantl
 
 Next, remove the old Opencast repository.
 Use `dnf` if you already use the repository packages.
-If you previously configured the repository manually, remove the repository files instead.
+If you previously configured the repository manually, just remove the repository files:
 
 ```sh
 % dnf remove opencast-repository-8
@@ -93,33 +98,33 @@ Then, install the new Opencast 9 repository:
 % dnf install https://pkg.opencast.org/rpms/release/el/8/oc-09/noarch/opencast-repository-9-0-1.el8.noarch.rpm
 ```
 
-The repository should now look like this:
+The system's repository configuration should now look like this:
 
 ```sh
 % dnf repolist 'opencast*'
-repo id                     repo name                                    status
-opencast                    Opencast 9 el 8 Repository                   enabled
-opencast-noarch             Opencast 9 el 8 Repository - noarch          enabled
-opencast-testing            Opencast 9 el 8 Test Repository              disabled
-opencast-testing-noarch     Opencast 9 el 8 Test Repository - noarch     disabled
+repo id                    repo name                                   status
+opencast                   Opencast 9 el 8 Repository                  enabled
+opencast-noarch            Opencast 9 el 8 Repository - noarch         enabled
+opencast-testing           Opencast 9 el 8 Test Repository             disabled
+opencast-testing-noarch    Opencast 9 el 8 Test Repository - noarch    disabled
 ```
 
-For the moment, you still need to enable the testing repository.
-Once the Opencast 9.1 RPMS have been moved to stable, this is no longer necessary.
+Until the Opencast 9.1 RPMS have been moved to stable,
+you also need to enable the testing repository.
 
 ```sh
 % sed -i 's/enabled *= *0/enabled = 1/' /etc/yum.repos.d/opencast-testing.repo
 
 % dnf repolist 'opencast*'
-repo id                     repo name                                    status
-opencast                    Opencast 9 el 8 Repository                   enabled
-opencast-noarch             Opencast 9 el 8 Repository - noarch          enabled
-opencast-testing            Opencast 9 el 8 Test Repository              enabled
-opencast-testing-noarch     Opencast 9 el 8 Test Repository - noarch     enabled
+repo id                    repo name                                   status
+opencast                   Opencast 9 el 8 Repository                  enabled
+opencast-noarch            Opencast 9 el 8 Repository - noarch         enabled
+opencast-testing           Opencast 9 el 8 Test Repository             enabled
+opencast-testing-noarch    Opencast 9 el 8 Test Repository - noarch    enabled
 ```
 
-Now that the repository is set up, you can upgrade opencast.
-We can do that using the `dnf` shell in one transaction.
+Now that the repository is set up, you can upgrade Opencast.
+Use the `dnf` shell to do that in one transaction.
 This will try adopting your old configuration changes whenever possible.
 
 Replace `opencast9-<dist>` with the distribution you want to upgrade,
@@ -139,7 +144,7 @@ In particular:
 - [Apply the basic configuration changes](https://docs.opencast.org/r/9.x/admin/configuration/basic/)
 
 
-Finally, restart and enable all necessary services:
+Finally, (re)start and enable all necessary services:
 
 ```
 % systemctl restart elasticsearch
@@ -149,6 +154,8 @@ Finally, restart and enable all necessary services:
 % systemctl restart opencast
 % systemctl enable opencast
 ```
+
+At this point you should have Opencast 9 up and running.
 
 
 Feedback
