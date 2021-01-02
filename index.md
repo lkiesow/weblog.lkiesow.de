@@ -1,4 +1,4 @@
-- [Jan 02, 2021 - Upgrade Opencast 8 to Opencast 9 RPM Repository](20210102-opencast-9-rpm-upgrade.md+)
+- [Jan 02, 2021 - Upgrade Opencast 8 to Opencast 9 RPM Repository](20210102-opencast-9-rpm-upgrade.md)
 - [Jul 05, 2020 - Real-time noise suppression in PulseAudio](20200705-ladspa-realtime-noise-suppression-plugin/index.md)
 - [Mar 18, 2020 - Integrate BigBlueButton with Opencast](20200318-integrate-bigbluebutton-opencast/index.md)
 - [Aug 19, 2018 - Lenovo Thinkpad BIOS Update Using fwupd](20180819-easy-thinkpad-bios-update.md)
