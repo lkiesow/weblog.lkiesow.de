@@ -1,6 +1,9 @@
 Changes to the Opencast RPM Repository Coming with Opencast 9
 =============================================================
 
+> _Updated at Mon Jan 11 11:48:45 PM CET 2021_
+
+
 *I've been maintaining the RPM repository for Opencast for about 8 years now.
 In that time, it has become one of the primary ways of installing Opencast.
 In fact, as demonstrated at the last conference, you can do a production ready installation in less than 30min.*
@@ -124,22 +127,27 @@ opencast-testing-noarch    Opencast 9 el 8 Test Repository - noarch    enabled
 ```
 
 Now that the repository is set up, you can upgrade Opencast.
-Use the `dnf` shell to do that in one transaction.
-This will try adopting your old configuration changes whenever possible.
+The new Opencast 9 packages will automatically replace the old Opencast 8 packages.
+They will also try adopting your old configuration changes whenever possible.
 
-Replace `opencast9-<dist>` with the distribution you want to upgrade,
-for example `opencast9-allinone`:
+Replace `opencast-<dist>` with the distribution you want to upgrade,
+for example `opencast-allinone`:
 
 ```sh
-% dnf shell
-> remove opencast
-> install opencast9-<dist> elasticsearch-oss
-> run
+% dnf  install opencast-<dist>
+...
+ Package               Architecture         Version          Repository            Size
+========================================================================================
+Installing:
+ opencast-allinone     noarch               9.1-5.el8        @commandline         218 M
+     replacing  opencast8-allinone.noarch 8.10-1.el8
+...
 ```
 
 Before starting the new version, make sure to follow the [upgrade guide](https://docs.opencast.org/r/9.x/admin/upgrade/).
 In particular:
 
+- [Install Elasticsearch](https://docs.opencast.org/r/9.x/admin/#installation/rpm-el8/#install-elasticsearch)
 - [Rebuild the Elasticsearch Index](https://docs.opencast.org/r/9.x/admin/upgrade/#rebuild-the-elasticsearch-indexes)
 - [Apply the basic configuration changes](https://docs.opencast.org/r/9.x/admin/configuration/basic/)
 
@@ -163,3 +171,5 @@ Feedback
 
 If you have any feedback to the new RPM repository, how packages are build, how the repository is structured or how it is deployed,
 please [contact me directly](mailto:opencast@lkiesow.de) or bring it to Opencast's mailing list.
+
+<time>Sat Jan  2 15:27:25 PM CET 2021</time>
