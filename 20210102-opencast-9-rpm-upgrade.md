@@ -75,6 +75,13 @@ without having to fear that we break the manually crafted repository configurati
 Upgrade from Opencast 8 to Opencast 9
 -------------------------------------
 
+### Demo
+
+<script id="asciicast-384646" src="https://asciinema.org/a/384646.js" async></script>
+
+
+### Explanation
+
 The following steps explain how to upgrade from an old Opencast 8 installation to Opencast 9
 while switching the repository along the way.
 
@@ -86,19 +93,13 @@ This allows for configuration and dependency updates without Opencast constantly
 % systemctl stop opencast
 ```
 
-Next, remove the old Opencast repository.
-Use `dnf` if you already use the repository packages.
-If you previously configured the repository manually, just remove the repository files:
+Next, upgrade the old Opencast repository.
+If you previously configured the repository manually, just remove the repository files.
+Then install the new repository.
 
 ```sh
-% dnf remove opencast-repository-8
-% rm -v /etc/yum.repos.d/opencast*repo
-```
-
-Then, install the new Opencast 9 repository:
-
-```sh
-% dnf install https://pkg.opencast.org/rpms/release/el/8/oc-09/noarch/opencast-repository-9-0-1.el8.noarch.rpm
+% rm -vf /etc/yum.repos.d/opencast*repo || :
+% dnf install https://pkg.opencast.org/rpms/release/el/8/oc-09/noarch/opencast-repository-9-1.el8.noarch.rpm
 ```
 
 The system's repository configuration should now look like this:
