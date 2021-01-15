@@ -75,12 +75,8 @@ without having to fear that we break the manually crafted repository configurati
 Upgrade from Opencast 8 to Opencast 9
 -------------------------------------
 
-### Demo
+> [Watch a demo video showing the upgrade process](https://asciinema.org/a/384646).
 
-<script id="asciicast-384646" src="https://asciinema.org/a/384646.js" async></script>
-
-
-### Explanation
 
 The following steps explain how to upgrade from an old Opencast 8 installation to Opencast 9
 while switching the repository along the way.
