@@ -3,20 +3,8 @@
 
 @import "jekyll-theme-midnight";
 
-/*
-#header {
-	display: none;
-}
-*/
-
-.credits {
-	position: absolute;
-	bottom: 3px;
-	float: none !important;
-}
-
-.right {
-	right: 0px;
+#title {
+	display: block;
 }
 
 time {
