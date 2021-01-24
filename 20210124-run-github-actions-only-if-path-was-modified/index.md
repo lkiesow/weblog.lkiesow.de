@@ -1,6 +1,10 @@
 Run GitHub Actions only if Path was Modified
 ============================================
 
+> Thanks to [Andrew Wilson](https://twitter.com/android_wiltron) for sharing a far superior way of doing this.
+> Turns out GitHub Actions has a built-in _paths_ feature.
+> I've updated the post.
+
 Having tests which automatically run if you get a pull request on GitHub helps a lot.
 Developers don't need to test patches only to find out they don't actually compile.
 Contributors get a very fast first feedback.
@@ -35,8 +39,28 @@ end
 ```
 
 
-GitHub Actions
---------------
+GitHub Actions Paths
+--------------------
+
+GitHub Actions [supports `paths` and `paths-ignore` for workflows](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths)
+allowing for workflows to be run only if a specific path is modified or, in case of `paths-ignore`, untouched.
+You can specify paths for both pull requests and push events like this:
+
+```yml
+on:
+  pull_request:
+    paths:
+      - docx/**
+```
+
+
+## Old solution below
+
+---
+
+
+
+### GitHub Actions
 
 GitHub Actions allows you to react to the output of previous steps.
 So we can build a step which checks for what has changed
@@ -114,8 +138,7 @@ Explanation for the steps:
    The syntax for checking output is `steps.<step-id>.outputs.<outpot-name>`.
 
 
-Conclusion
-----------
+### Conclusion
 
 This is an easy way to decide if you want to run certain steps.
 Though by using the pull request patch files, this will work only for checks on pull requests, not on push events.
