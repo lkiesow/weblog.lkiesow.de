@@ -119,7 +119,7 @@ What is interesting, is that there does not seem to be any benefit in building w
 
 <center>
   <img src="skiptests-false.svg" /><br />
-  <em>Build time in minutes for a full build.</em>
+  <em>Build time in minutes for a full build.</em><br />
 </center>
 
 Approximately 8 minutes faster is quite impressive and helpful.
@@ -134,7 +134,7 @@ Let's take a look at what happens if we build using `-DskipTests`:
 
 <center>
   <img src="skiptests-true.svg" /><br />
-  <em>Build time in minutes for a build with skipped tests.</em>
+  <em>Build time in minutes for a build with skipped tests.</em><br />
 </center>
 
 This still cuts the build time in half compared to the sequential build.
@@ -150,7 +150,7 @@ Now let's take a look at the assembly step and if we can speed that one up as we
 
 <center>
   <img src="all.svg" /><br />
-  <em>Build time in seconds for all distributions (`-Pall`).</em>
+  <em>Build time in seconds for all distributions (`-Pall`).</em><br />
 </center>
 
 And again, we need less than a third of what we need for a sequential build.
@@ -166,7 +166,7 @@ How does parallel builds effect this?
 
 <center>
   <img src="dev.svg" /><br />
-  <em>Build time in seconds for development distributions (`-Pdev`).</em>
+  <em>Build time in seconds for development distributions (`-Pdev`).</em><br />
 </center>
 
 As one can see, for a single distribution, there is no benefit – but also no penalty – in building with multiple threads.
