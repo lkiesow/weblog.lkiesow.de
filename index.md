@@ -1,3 +1,4 @@
+- [Feb 23, 2022 – Proxmox-based Self-Service Portal for Test Machines at Osnabrück University](20220223-proxmox-test-machine-self-servic/part-0-the-idea.md)
 - [Feb 19, 2022 – CentOS Stream LXC Container Template](20220219-centos-stream-lxc-template.md)
 - [Jul 26, 2021 – Parallel Maven Builds (Opencast)](20210726-parallel-maven-builds/index.md)
 - [Jan 24, 2021 – Run GitHub Actions only if a Certain Path was Modified](20210124-run-github-actions-only-if-path-was-modified/index.md)
