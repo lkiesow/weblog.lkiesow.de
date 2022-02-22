@@ -1,0 +1,14 @@
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  listen 443 ssl http2 default_server;
+  listen [::]:443 ssl http2 default_server;
+  server_name _;
+
+  ssl_certificate_key /etc/pve/local/pveproxy-ssl.key;
+  ssl_certificate     /etc/pve/local/pveproxy-ssl.pem;
+
+  location / {
+    return 404 'Not found\n';
+  }
+}

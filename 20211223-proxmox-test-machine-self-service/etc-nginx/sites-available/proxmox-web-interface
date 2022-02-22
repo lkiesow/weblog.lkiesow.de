@@ -1,0 +1,75 @@
+server {
+  # Enforce HTTPS by redirecting requests
+  listen 80;
+  listen [::]:80;
+  server_name proxmox.home.lkiesow.io;
+
+  # Enforce encrypted connections
+  location / {
+    return 301 https://proxmox.home.lkiesow.io$request_uri;
+  }
+}
+
+server {
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;
+  server_name proxmox.home.lkiesow.io;
+
+  ssl_certificate_key /etc/pve/local/pveproxy-ssl.key;
+  ssl_certificate     /etc/pve/local/pveproxy-ssl.pem;
+
+  # Config to enable HSTS (HTTP Strict Transport Security) [1] to avoid ssl
+  # stripping [2].
+  # [1] https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
+  # [2] https://en.wikipedia.org/wiki/SSL_stripping#SSL_stripping
+  #add_header Strict-Transport-Security "max-age=31536000; includeSubdomains;";
+
+  # Config to not allow the browser to render the page inside an frame or
+  # iframe and avoid clickjacking [1].
+  # [1] http://en.wikipedia.org/wiki/Clickjacking
+  # [2] https://developer.mozilla.org/en-US/docs/HTTP/X-Frame-Options
+  add_header X-Frame-Options SAMEORIGIN;
+
+  # When serving user-supplied content, include a X-Content-Type-Options:
+  # nosniff header along with the Content-Type: header, to disable
+  # content-type sniffing on some browsers.
+  # https://www.owasp.org/index.php/List_of_useful_HTTP_headers
+  add_header X-Content-Type-Options nosniff;
+
+  # This header enables the cross-site scripting (XSS) filter built into most
+  # recent web browsers.    It's usually enabled by default anyway, so the role
+  # of this header is to re-enable the filter for this particular website if
+  # it was disabled by the user.
+  # https://www.owasp.org/index.php/List_of_useful_HTTP_headers
+  add_header X-XSS-Protection "1; mode=block";
+
+  # With Content Security Policy (CSP) enabled and a browser that supports it
+  # [1] you can tell the browser that it can only download content from the
+  # domains you explicitly allow [2, 3]
+  # [1] http://caniuse.com/#feat=contentsecuritypolicy
+  # [2] http://www.html5rocks.com/en/tutorials/security/content-security-policy/
+  # [3] https://www.owasp.org/index.php/Content_Security_Policy
+  #add_header Content-Security-Policy "default-src 'none'; connect-src 'self'; font-src 'self' data:; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none';";
+
+  # Only send the shortened referrer to a foreign origin, full referrer
+  # to a local host
+  # https://infosec.mozilla.org/guidelines/web_security#referrer-policy
+  add_header Referrer-Policy strict-origin-when-cross-origin;
+
+  # Proxy configuration
+  location / {
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_pass https://127.0.0.1:8006;
+    proxy_buffering off;
+    client_max_body_size 0;
+    proxy_connect_timeout  3600s;
+    proxy_read_timeout  3600s;
+    proxy_send_timeout  3600s;
+    send_timeout  3600s;
+    proxy_set_header Host $host;
+    proxy_ssl_name $host;
+    proxy_set_header X-Forwarded-For $remote_addr;
+  }
+}
