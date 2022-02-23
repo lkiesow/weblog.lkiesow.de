@@ -1,10 +1,8 @@
 SSH Jumphost for the Internal Network
 =====================================
 
-> - This guide assumes [an internal network has already been set up
->   ](internal-network.md) on the Proxmox server.
-> - This guide assumes [a DNS and DHCP server for the internal network
->   has been set up](dhcp-and-dns-in-internal-network.md).
+> - This guide assumes [an internal network has already been set up](internal-network.md) on the Proxmox server.
+> - This guide assumes [a DNS and DHCP server for the internal network has been set up](dhcp-and-dns-in-internal-network.md).
 
 Having an internal network is nice, but it also makes it harder for legitimate users to log into and thus use machines. Having a public SSH jump-host is a mechanism to give users access by having SSH automatically tunnel connections through this machine.
 
@@ -202,7 +200,7 @@ Connection to proxmox.home.lkiesow.io closed.
 
 To tell SSH to jump over it, users have to edit their local SSH configuration in `~/.ssh/config` and set something like:
 
-```properties
+```
 # Configuration for proxmox client machines in internal network
 # All connections need use the jump host
 Host *.pve-internal.home.lkiesow.io
@@ -229,3 +227,7 @@ root@a.pve-internal.home.lkiesow.io's password:
 Last login: Sun Feb 13 22:42:08 2022 from 10.0.0.3
 root@a:~#
 ```
+
+---
+
+[◂   Back to: Part 2 – Proxmox & Internal Network Magic](part-2-internal-network-magic.md)

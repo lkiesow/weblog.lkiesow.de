@@ -1,7 +1,7 @@
 Part 1 – Basic Set-up of Proxmox
 ================================
 
-Now that we [have a plan for integrating Proxmox](index.md) in our environment, let's get started and actually get Proxmox installed and configured. To make the process easier to follow, I'm describing the idea of what I want to change and why here, but link to separate articles for and explanation of the actual change. This part also serves as a basic set-up guide for steps to take on most Proxmox set-ups.
+Now that we [have a plan for integrating Proxmox](part-0-the-idea.md) in our environment, let's get started and actually get Proxmox installed and configured. To make the process easier to follow, I'm describing the idea of what I want to change and why here, but link to separate articles for and explanation of the actual change. This part also serves as a basic set-up guide for steps to take on most Proxmox set-ups.
 
 But first, [Download the Proxmox Virtual Environment ISO image](https://www.proxmox.com/en/downloads) and use the installation wizard to get the base system up and running. This is a very straightforward process with no real difference to the installation of any other Linux distribution.
 

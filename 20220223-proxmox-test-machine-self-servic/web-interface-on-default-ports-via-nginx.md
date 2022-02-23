@@ -128,3 +128,7 @@ Then restart the service:
 ```
 ❯ systemctl restart pveproxy.service
 ```
+
+---
+
+[◂   Back to: Part 1 – Basic Set-up of Proxmox](part-1-basic-setup.md)

@@ -145,3 +145,7 @@ You need to use its IP address and not its domain mane:
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 ...
 ```
+
+---
+
+[◂   Back to: Part 2 – Proxmox & Internal Network Magic](part-2-internal-network-magic.md)

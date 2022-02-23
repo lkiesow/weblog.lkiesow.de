@@ -1,8 +1,7 @@
 DHCP and DNS in Internal Network
 ================================
 
-> This guide assumes [an internal network has already been set up
-> ](internal-network.md) on the Proxmox server.
+> This guide assumes [an internal network has already been set up](internal-network.md) on the Proxmox server.
 
 
 While using static IPs on the internal network works, it can be pretty annoying.
@@ -212,3 +211,7 @@ Use `hostnamectl` on host `c` to change this:
 ```
 
 After rebooting `c`, the hostname should now be advertised.
+
+---
+
+[◂   Back to: Part 2 – Proxmox & Internal Network Magic](part-2-internal-network-magic.md)

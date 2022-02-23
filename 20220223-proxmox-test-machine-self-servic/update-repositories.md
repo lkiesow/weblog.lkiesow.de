@@ -42,3 +42,7 @@ apt update
 apt list --upgradable
 apt dist-upgrade
 ```
+
+---
+
+[◂   Back to: Part 1 – Basic Set-up of Proxmox](part-1-basic-setup.md)
