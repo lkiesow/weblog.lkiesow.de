@@ -1,9 +1,9 @@
 HTTP(S) Reverse Proxy for Internal Machines
 ===========================================
 
-> - This guide assumes [an internal network has already been set up](internal-network.md) on the Proxmox server.
-> - This guide assumes [a DNS and DHCP server for the internal network has been set up](dhcp-and-dns-in-internal-network.md).
-> - This guide assumes you already [have Nginx running to serve the Proxmox web interface](web-interface-on-default-ports-via-nginx.md) on the server.
+> - This guide assumes [an internal network has already been set up](internal-network.html) on the Proxmox server.
+> - This guide assumes [a DNS and DHCP server for the internal network has been set up](dhcp-and-dns-in-internal-network.html).
+> - This guide assumes you already [have Nginx running to serve the Proxmox web interface](web-interface-on-default-ports-via-nginx.html) on the server.
 
 Being able to quickly deploy machines in an internal network is great, but most of the time, you do want to provide services to the outside after all.
 While you could use port-forwarding from the server, this only one service could run on the default port and most would need to use custom ports.
@@ -177,7 +177,7 @@ server {
 Again, link the configuration from `sites-enabled`, test it and restart Nginx to make this active.
 Now, doing the same request, we get a `404` directly from Nginx instead:
 
-```http
+```
 ❯ curl -i http://a.pve-internal.home.lkiesow.io -H 'Host: google.de'
 HTTP/1.1 404 Not Found
 …
