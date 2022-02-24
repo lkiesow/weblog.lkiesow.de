@@ -6,3 +6,9 @@ description: >
    and occasional lecturer.
 theme: jekyll-theme-midnight
 show_downloads: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/preview.png
