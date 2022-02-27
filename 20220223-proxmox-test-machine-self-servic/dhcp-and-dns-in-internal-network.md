@@ -14,7 +14,7 @@ or on a machine or container running in Proxmox:
 - The advantage of running the service in a machine or container is that this separates your service from Proxmox,
   having it on a separate operating system without access to all networks.
 
-  This means that a misconfiguration should not effect your Proxmox server or even your outside network
+  This means that a misconfiguration should not affect your Proxmox server or even your outside network
   (e.g. accidentally launching a DHCP server on your external network, interfering with existing ones).
 
 - The advantage of running it on the Proxmox server itself is that no one can accidentally shut down
@@ -39,7 +39,7 @@ I have `10.0.0.1` assigned to Proxmox and will use `10.0.0.2` for `dnsmasq`:
 
 Make sure to update the container as usual:
 
-```
+```term
 ❯ apt update
 ❯ apt upgrade
 ```
@@ -48,14 +48,14 @@ The Proxmox Debian container template comes with `systemd-resolved` enabled.
 This will conflict with `dnsmasq` and we don't actually need it.
 We disable it running:
 
-```
+```term
 ❯ systemctl stop systemd-resolved.service
 ❯ systemctl disable systemd-resolved.service
 ```
 
 Now we are all ready to install `dnsmasq`:
 
-```
+```term
 ❯ apt install dnsmasq
 ```
 
@@ -63,7 +63,7 @@ As usual, Debian will automatically start the service after an installation, and
 But the service is configured as a DNS server only by default, and we need to add additional configuration.
 For that, create a file `/etc/dnsmasq.d/internal` with configuration like this:
 
-```properties
+```sh
 # Tells dnsmasq to never forward A or AAAA queries for plain names,
 # without dots or domain parts, to upstream nameservers.
 # If the name is not known from /etc/hosts or DHCP then a "not found" answer is
@@ -130,7 +130,7 @@ dhcp-option=option:router,10.0.0.1
 
 Finally, restart and enable `dnsmasq` and check that it is up and running:
 
-```
+```term
 ❯ systemctl restart dnsmasq.service
 ❯ systemctl enable dnsmasq.service
 ❯ systemctl status dnsmasq.service
@@ -148,7 +148,7 @@ The differences are very minor:
 - The server should have more network interfaces.
   Make sure the `listen-address` options are set correctly to listen on the internal network but not the external one.
   Otherwise, Proxmox would start responding to DHCP requests for the external network.
-  Having multiple DHCP servers active and responding one one network is generally troublesome.
+  Having multiple DHCP servers active and responding on one network is generally troublesome.
   You probably want to set:
 
   ```
@@ -166,13 +166,13 @@ DHCP.
 After starting up both containers, log into `a` and check if you can ping an
 external host (e.g. `gooogle.de`) and the container `b`:
 
-```
+```term
 ❯ ping -c1 google.de
 PING google.de (142.250.186.67) 56(84) bytes of data.
 64 bytes from fra24s05-in-f3.1e100.net (142.250.186.67): icmp_seq=1 ttl=110 time=28.5 ms
 ```
 
-```
+```term
 ❯ ping -c1 b
 PING b.pve-internal.home.lkiesow.io (10.0.160.225) 56(84) bytes of data.
 64 bytes from b.pve-internal.home.lkiesow.io (10.0.160.225): icmp_seq=1 ttl=64 time=0.092 ms
@@ -196,7 +196,7 @@ If you repeat the test from above but instead spin up a container using
 Proxmox's default CentOS 8 container and then try to ping it, you will get a
 result like:
 
-```
+```term
 ❯ ping -c1 c
 ping: c: No address associated with hostname
 ```
@@ -206,7 +206,7 @@ The reason for this is that `c` does not advertise its hostname via DHCP and
 
 Use `hostnamectl` on host `c` to change this:
 
-```
+```term
 ❯ hostnamectl set-hostname c
 ```
 

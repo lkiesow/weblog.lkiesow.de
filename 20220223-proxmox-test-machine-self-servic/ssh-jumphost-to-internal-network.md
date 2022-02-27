@@ -34,7 +34,7 @@ Also make sure to set up your internal DNS server for this machine to be able to
 
 Make sure to update the container as usual:
 
-```
+```term
 ❯ apt update
 ❯ apt upgrade
 ```
@@ -45,13 +45,13 @@ Now that we have the environment, we can set up the OpenSSH server.
 On your Proxmox server, you already have this. Even on a container, the `openssh-server` might even already be installed in your container.
 Still, to be sure, run:
 
-```
+```term
 ❯ apt install openssh-server
 ```
 
 Then, start and enable `sshd`:`
 
-```
+```term
 ❯ systemctl start sshd.service
 ❯ systemctl enable sshd.service
 ```
@@ -71,7 +71,7 @@ PermitRootLogin without-password
 
 After changing the option, restart `sshd`:
 
-```
+```term
 ❯ systemctl restart sshd.service
 ```
 
@@ -91,7 +91,7 @@ Then prepare adding an SSH key by adding an `authorized_keys` file with the corr
 With your current set-up, you should now be able to SSH into this machine from your Proxmox server
 or any other machines on the internal network:
 
-```
+```term
 ❯ ssh 10.0.0.3
 root@10.0.0.3's password:
 Linux ssh-jump 5.13.19-4-pve #1 SMP PVE 5.13.19-8 (Mon, 31 Jan 2022 10:09:37 +0100) x86_64
@@ -109,7 +109,7 @@ So, it's time to expose the jump-host to the outside.
 For that, we forward port `2222` on Proxmox to the new jump-host port `22` (SSH).
 To do that, on the Proxmox server, run:
 
-```
+```term
 ❯ iptables -t nat -A PREROUTING -p tcp -i vmbr0 --dport 2222 -j DNAT --to-destination 10.0.0.3:22
 ```
 
@@ -117,7 +117,7 @@ Make sure that your external network interface (`vmbr0`) and your destination ad
 
 You should now be able to log into your jump host from outside, by connecting to your Proxmox server on port 2222:
 
-```
+```term
 ❯ ssh -p 2222 root@proxmox.home.lkiesow.io
 root@proxmox.home.lkiesow.io's password:
 ...
@@ -145,7 +145,7 @@ For SSH to forward the connections to the internal hosts, it must be able to res
 
 For example, on the jump host, I should be able to resolve `a.pve-internal.home.lkiesow.io`, which is a machine in my internal network, and ping this machine:
 
-```
+```term
 ❯ ping -c1 a.pve-internal.home.lkiesow.io
 PING a.pve-internal.home.lkiesow.io (10.0.243.108) 56(84) bytes of data.
 64 bytes from a.pve-internal.home.lkiesow.io (10.0.243.108): icmp_seq=1 ttl=64 time=0.065 ms
@@ -154,7 +154,7 @@ PING a.pve-internal.home.lkiesow.io (10.0.243.108) 56(84) bytes of data.
 If this does not work, make sure to add your local DNS server.
 The DNS settings when creating the container should have already taken care of this:
 
-```
+```term
 ❯ cat /etc/resolv.conf 
 # --- BEGIN PVE ---
 search pve-internal.home.lkiesow.io
@@ -170,13 +170,13 @@ Adding a user only allowed to use the server to jump to other servers in the int
 but not to actually log into the server itself, is quite simple.
 When creating a user, you just assign `/bin/false` as login shell:
 
-```
+```term
 ❯ useradd -m -s /bin/false lars
 ```
 
 Next, prepare the `authorized_keys` file:
 
-```
+```term
 ❯ mkdir -m 700 /home/lars/.ssh
 ❯ touch /home/lars/.ssh/authorized_keys
 ❯ chmod 600 /home/lars/.ssh/authorized_keys
@@ -191,7 +191,7 @@ Using the Proxy
 
 You should now be able to use the jump-host to connect to machines in the internal network. However, if you try connecting to the jump-host itself, you will automatically be rejected:
 
-```
+```term
 ❯ ssh -p 2222 lars@proxmox.home.lkiesow.io
 Linux ssh-jump 5.13.19-4-pve #1 SMP PVE 5.13.19-8 (Mon, 31 Jan 2022 10:09:37 +0100) x86_64
 ...
@@ -220,7 +220,7 @@ The `Host` in this configuration is different from the actual `HostName` so that
 
 Now you can SSH into any internal machine as if they were on a public network:
 
-```
+```term
 ❯ ssh a.pve-internal.home.lkiesow.io
 root@a.pve-internal.home.lkiesow.io's password:
 ...

@@ -5,12 +5,14 @@ The web interface of Proxmox is available on port `8006` instead of the default 
 HTTP on Port `80` is not available at all.
 This guide uses Nginx to make the interface available on the default ports and redirect HTTP to HTTPS.
 
-## Install and Configure Nginx
+
+Install and Configure Nginx
+---------------------------
 
 You can install Nginx from the Debian repository.
 For our use-case, the smaller `nginx-light` package should suffice:
 
-```
+```term
 ❯ apt install nginx-light
 ```
 
@@ -19,7 +21,7 @@ What is left is to configure Nginx as reverse proxy.
 
 Remove the default configuration:
 
-```
+```term
 ❯ rm /etc/nginx/sites-*/default
 ```
 
@@ -69,28 +71,30 @@ You can set more complex security options.
 For a longer example, see [my example `/etc/nginx/sites-enabled/proxmox-web-interface`](etc-nginx/sites-enabled/proxmox-web-interface).
 It includes the reverse proxy options and sets a number of different headers.
 The reasoning for each header is included with additional information about what it does exactly.
-There is also a fine tuned version of [`/etc/nginx/nginx.conf`](etc-nginx/nginx.conf) which can be used alongside this.
+There is also a fine-tuned version of [`/etc/nginx/nginx.conf`](etc-nginx/nginx.conf) which can be used alongside this.
 
 After updating the configuration, link it from the `sites-enabled` directory:
 
-```
+```term
 ❯ cd /etc/nginx/sites-enabled
 ❯ ln -s /etc/nginx/sites-available/proxmox-web-interface
 ```
 
 Finally, check if Nginx can spot any errors:
 
-```
+```term
 ❯ nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-## Restart Nginx and Enable it by Default
+
+Restart Nginx and Enable it by Default
+--------------------------------------
 
 To start Nginx and make sure it starts automatically after a system reboot, run:
 
-```
+```term
 ❯ systemctl restart nginx.service
 ❯ systemctl enable nginx.service
 ```
@@ -107,15 +111,16 @@ After=pve-cluster.service
 Alternatively, you can also use `systemctl edit nginx.service` to edit this file.
 
 
-## Make Proxmox UI Service Listen to Localhost Only
+Make Proxmox UI Service Listen to Localhost Only
+------------------------------------------------
 
 > __⚠ Warning:__
 > I'm unsure if this works in a cluster setup without problems,
 > or if the other servers cannot reach the API any longer.
 > If you tried and know the answer, please let me know.
 
-The web interface is now available via https://example.com and https://example.com:8006.
-Ro ensure everyone is using the our Nginx set-up, we cam make the web interface service listen to local requests only.
+The web interface is now available via https://proxmox.home.lkiesow.io and https://proxmox.home.lkiesow.io:8006.
+To ensure everyone is using the Nginx set-up, we can make the web interface service listen to local requests only.
 
 Create `/etc/default/pveproxy` and set:
 
@@ -125,7 +130,7 @@ LISTEN_IP="127.0.0.1"
 
 Then restart the service:
 
-```
+```term
 ❯ systemctl restart pveproxy.service
 ```
 

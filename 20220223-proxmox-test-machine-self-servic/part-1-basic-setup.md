@@ -28,16 +28,16 @@ With this done, we can now easily keep our server up-to-date with a simple `apt 
 Default HTTP(S) Ports
 ---------------------
 
-Finally, we want to make the web interface available on the default HTTP and HTTPS ports with HTTP immediately redirecting to HTTPS. While this is not strictly necessary, it avoids confusion if many people use this since they have to remember to use a custom port. Using the defaults instead is just easier:
+Finally, we want to make the web interface available on the default HTTP and HTTPS ports, with HTTP immediately redirecting to HTTPS. While this is not strictly necessary, it avoids confusion if many people use this since they have to remember to use a custom port. Using the defaults instead is just easier:
 
 - [Guide: Use Nginx to serve web interface on default HTTP(S) ports](web-interface-on-default-ports-via-nginx.md)
 
-That's it for the default set-up. With just this done, I can already hand out  logins and users can start creating new machines and containers. Even in the University network. …at least if they picked a registered MAC/IP from the list.
+That's it for the default set-up. With just this done, I can already hand out logins and users can start creating new machines and containers. Even in the University network. …at least if they picked a registered MAC/IP from the list.
 
 Bonus: Remove Subscription Notice
 ---------------------------------
 
-I have a few sandbox systems for people to play around and wanted them to look and feel like the real systems even though I don't have a subscription for these. The notice after people logged into the system was confusing and I simply removed it on those systems:
+I have a few sandbox systems for people to play around and wanted them to look and feel like the real systems even though I don't have a subscription for these. The notice after people logged into the system was confusing, and I simply removed it on those systems:
 
 - [Guide: Remove Subscription Notice](remove-subscription-notice.md)
 

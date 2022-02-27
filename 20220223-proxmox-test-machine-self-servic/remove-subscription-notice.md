@@ -15,7 +15,7 @@ Nevertheless, this might be annoying in a few cases.
 
 In short, just run:
 
-```
+```term
 ❯ sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 ```
 

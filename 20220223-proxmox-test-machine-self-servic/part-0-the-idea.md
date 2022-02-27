@@ -22,7 +22,7 @@ Instead, application forms and paperwork need to be involved to register the mac
 The Perfect Plan Crushed
 ------------------------
 
-To make it quite clear from the begging: Our network administrators said no to this idea and I had to abandon it. But maybe in the future if the service is well established they change their mind. Who knows.
+To make it quite clear from the beginning: Our network administrators said no to this idea and I had to abandon it. But maybe in the future if the service is well established they change their mind. Who knows.
 
 Our data center has a `/16` IP address block and I asked if they would part with a `/24` sub-block for me to route to my server, which I could then handle myself and use it to automatically assign addresses. Unfortunately, the answer was no.
 

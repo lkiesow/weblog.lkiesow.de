@@ -7,7 +7,7 @@ But even without subscription, you can turn on updates.
 You should be aware, though, that the [Proxmox VE No-Subscription Repository](https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo)
 is marked as for testing and non-production use.
 If you want to use it probably depends on how important your server is.
-Do you rely on the server and it is a big deal if there is a problem?
+Do you rely on the server, and it is a big deal if there is a problem?
 Then, you probably want to consider paying for a subscription.
 Is it for testing only?
 Then, you are probably fine with the non-subscription repository.
@@ -33,14 +33,15 @@ This will prevent `apt` from complaining if you do not have a subscription:
 ```
 
 
-## Update
+Update
+------
 
 Once enabled, use `apt` to run your first update:
 
-```
-apt update
-apt list --upgradable
-apt dist-upgrade
+```term
+❯ apt update
+❯ apt list --upgradable
+❯ apt dist-upgrade
 ```
 
 ---

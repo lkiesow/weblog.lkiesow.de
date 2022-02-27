@@ -56,13 +56,13 @@ In most cases, using a `/24` network instead should also suffice.
 
 Finally, bring your new network interface up using:
 
-```sh
+```term
 ❯ ifup vmbr1
 ```
 
 You can check the status of the new interface running:
 
-```sh
+```term
 ❯ ip a
 ...
 7: vmbr1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
@@ -104,7 +104,7 @@ NAT Configuration
 While you can already create machines and assign the new interface,
 these machines can not route to the internet.
 This can be the desired state if you want a completely separate network.
-Usually, you want machines to be able to reach the internet though.
+Usually, you want machines to be able to reach the internet, though.
 
 For this, we want a NAT configuration.
 Imagine this as your home router, which will route traffic from your home network to the internet,
@@ -139,7 +139,7 @@ using the following network settings:
 Once started up, try pinging any external server.
 You need to use its IP address and not its domain mane:
 
-```
+```term
 ❯ ping -4 -c 1 93.184.216.34
 ...
 1 packets transmitted, 1 received, 0% packet loss, time 0ms

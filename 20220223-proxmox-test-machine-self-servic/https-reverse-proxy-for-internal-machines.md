@@ -62,7 +62,7 @@ server {
 
 Link this new file from the `sites-enabled` folder, which Debian's default Nginx configuration then automatically includes:
 
-```
+```term
 ❯ cd /etc/nginx/sites-enabled
 ❯ ln -s /etc/nginx/sites-available/<name>
 ```
@@ -72,7 +72,7 @@ This will return the internal IP address, and Nginx can use that to proxy to the
 
 To check if the configuration is okay, run:
 
-```
+```term
 ❯ nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -80,7 +80,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 Finally, restart Nginx:
 
-```
+```term
 ❯ systemctl restart nginx
 ```
 
@@ -127,7 +127,7 @@ This is a more generic version of the configuration for a single host, which mat
 
 As before, link the configuration from `sites-enabled`, test the configuration and restart Nginx to make this active:
 
-```
+```term
 ❯ cd /etc/nginx/sites-enabled
 ❯ ln -s /etc/nginx/sites-available/internal-host-proxy
 ❯ nginx -t
@@ -139,7 +139,7 @@ __⚠__ Don't Proxy to External Servers
 
 Now that we dynamically decide which host to proxy, let's do a fun trick and make a request against our server, providing `Host: google.de` as an HTTP header in the request:
 
-```http
+```term
 ❯ curl -i http://a.pve-internal.home.lkiesow.io -H 'Host: google.de'
 HTTP/1.1 301 Moved Permanently
 …
@@ -177,7 +177,7 @@ server {
 Again, link the configuration from `sites-enabled`, test it and restart Nginx to make this active.
 Now, doing the same request, we get a `404` directly from Nginx instead:
 
-```
+```term
 ❯ curl -i http://a.pve-internal.home.lkiesow.io -H 'Host: google.de'
 HTTP/1.1 404 Not Found
 …

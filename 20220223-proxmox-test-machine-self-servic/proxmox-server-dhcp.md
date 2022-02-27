@@ -19,22 +19,23 @@ This means that if I want to get a device deployed, I have to:
 - Get an IP address based on the network segment I want to be in
 - Configure the address or enable DHCP
 
-This mans that even with DHCP, I have a static IP address guaranteed unless I specifically request a change.
+This means that even with DHCP, I have a static IP address guaranteed unless I specifically request a change.
 
 Still, my first deployment used static IP addresses.
 That worked great until I requested the server to be moved from the data center internal network to the external network so that our developers can access the machine from home.
 That is when I get a net IP in a different network segment assigned.
-That is also, when my server had an invalid network configuration and I was unable to access it.
+That is also, when my server had an invalid network configuration, and I was unable to access it.
 
-That's not great when you work from home and access to your data center is restricted to internal personal only.
-Luckily I still had access too the server's (horrible) remote management console and was able to resolve the issue.
+Not great when you work from home and access to your data center is restricted to internal personal only.
+Luckily, I still had access through the server's (horrible) remote management console and was able to resolve the issue.
 Nevertheless, that drove me to using static IPs assigned via DHCP.
 
 By now, I almost always use DHCP for Proxmox, using my network infrastructure to assign static IP addresses.
 I do that even at home, where accessing a device directly is relatively easy.
 
 
-## Network Configuration
+Network Configuration
+---------------------
 
 To enable DHCP, on your server, edit `/etc/network/interfaces`.
 You should see a configuration like this (interface names may varry):
@@ -58,18 +59,19 @@ iface vmbr0 inet dhcp
 ```
 
 
-## Configure Hostname
+Configure Hostname
+------------------
 
 You should also make sure your hostname is properly configured.
 You can set the hostname using the tool `hostnamectl`:
 
-```
+```term
 ❯ hostnamectl set-hostname proxmox.home.lkiesow.io
 ```
 
 To verify it is set correctly, use:
 
-```
+```term
 ❯ hostname
 proxmox.home.lkiesow.io
 ```
@@ -83,7 +85,8 @@ The file should look somewhat like this:
 ```
 
 
-## Dynamic Host Configuration
+Dynamic Host Configuration
+--------------------------
 
 On a Proxmox server, when updating the IP address, `/etc/hosts` must be updated as well.
 That is why just enabling DHCP can cause problems.
