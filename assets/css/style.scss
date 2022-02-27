@@ -30,3 +30,7 @@ audio {
 li > ul {
 	margin: 0;
 }
+
+#title + ul {
+	padding-left: 20px;
+}
