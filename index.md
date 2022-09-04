@@ -1,3 +1,4 @@
+- [Sep 04, 2022 – Make use of MinIO S3 Service Accounts](20220903-minio-service-accounts/index.md)
 - [Mar 11, 2022 – Make Linux Prefer IPv4](20220311-make-linux-prefer-ipv4.md)
 - [Feb 23, 2022 – Proxmox-based Self-Service Portal for Test Machines at Osnabrück University](20220223-proxmox-test-machine-self-servic/part-0-the-idea.md)
     - [Part 0 – The Story of VMs for Developers](20220223-proxmox-test-machine-self-servic/part-0-the-idea.md)
