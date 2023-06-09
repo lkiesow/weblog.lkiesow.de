@@ -125,6 +125,6 @@ localhost                  : ok=0    changed=0    unreachable=0    failed=1    s
 
 It would be nice to have this integrated into Ansible in the long run, but this is a very effective solution for now.
 
-<date>
+<time>
 Tue May 30 03:55:51 PM CEST 2023
-</date>
+</time>

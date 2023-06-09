@@ -83,6 +83,6 @@ qm template "${VMID}"
 rm CentOS-Stream-GenericCloud-9-*.x86_64.qcow2
 ```
 
-<date>
+<time>
 Fri Jun  9 04:48:37 PM CEST 2023
-</date>
+</time>
