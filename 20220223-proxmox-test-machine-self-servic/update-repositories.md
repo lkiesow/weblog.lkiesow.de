@@ -22,7 +22,8 @@ In `/etc/apt/sources.list` add:
 
 ```sh
 # PVE pve-no-subscription repository provided by proxmox.com
-deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
+# On PVE 7.x: deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
+deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
 ```
 
 Additionally, you want to comment out the enterprise repository in `/etc/apt/sources.list.d/pve-enterprise.list`.
