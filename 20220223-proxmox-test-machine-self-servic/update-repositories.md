@@ -1,6 +1,8 @@
 Enable Non-Subscription Updates
 ===============================
 
+> Updated on 2024-01-13 for PVE8
+
 Not all my machines have an update subscription.
 But even without subscription, you can turn on updates.
 
@@ -22,8 +24,16 @@ In `/etc/apt/sources.list` add:
 
 ```sh
 # PVE pve-no-subscription repository provided by proxmox.com
-# On PVE 7.x: deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
 deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+# Ceph Reef No-Subscription Repository
+deb http://download.proxmox.com/debian/ceph-reef bookworm no-subscription
+```
+
+For the old PVE 7.x, use this instead:
+
+```sh
+# PVE pve-no-subscription repository provided by proxmox.com
+deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
 ```
 
 Additionally, you want to comment out the enterprise repository in `/etc/apt/sources.list.d/pve-enterprise.list`.
@@ -31,6 +41,12 @@ This will prevent `apt` from complaining if you do not have a subscription:
 
 ```sh
 # deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise
+```
+
+Also comment out the enterprise Ceph repository in `/etc/apt/sources.list.d/ceph.list`:
+
+```sh
+# deb https://enterprise.proxmox.com/debian/ceph-quincy bookworm enterprise
 ```
 
 
