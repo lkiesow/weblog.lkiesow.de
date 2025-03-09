@@ -11,7 +11,7 @@ Next, this is how you install the font in Fedora:
 
 ```sh=
 # download font
-curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
 
 # create local font directory and unzip the font
 mkdir -p ~/.local/share/fonts
