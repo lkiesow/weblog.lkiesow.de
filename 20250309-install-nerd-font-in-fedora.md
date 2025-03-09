@@ -9,7 +9,7 @@ I selected “Hack”, but you can pick any font you like.
 
 Next, this is how you install the font in Fedora:
 
-```sh=
+```bash
 # download font
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
 
