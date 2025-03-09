@@ -1,3 +1,4 @@
+- [Mar 09, 2025 – Build Multiarch Golang Binaries on GitHub Actions](20250309-multiarch-golang-binaries-on-github-actions.md)
 - [Mar 09, 2025 – Install Nerd Fonts in Fedora](20250309-install-nerd-font-in-fedora.md)
 - [Jan 14, 2024 – Configure ACME via Cloudflare DNS in Proxmox](20240114-pve-acme-cloudflare.md)
 - [Jun 09, 2023 – Import CentOS Stream Cloud Image in Proxmox](20230609-pve-centos-stream-cloud-image.md)
