@@ -1,4 +1,4 @@
-- [Sep 30, 2025 - Using Motorcomm YT6801 Gigabit Ethernet Controller in Proxmox](20250930-proxmox-yt6801.md)
+- [Sep 30, 2025 – Using Motorcomm YT6801 Gigabit Ethernet Controller in Proxmox](20250930-proxmox-yt6801.md)
 - [Mar 09, 2025 – Build Multiarch Golang Binaries on GitHub Actions](20250309-multiarch-golang-binaries-on-github-actions.md)
 - [Mar 09, 2025 – Install Nerd Fonts in Fedora](20250309-install-nerd-font-in-fedora.md)
 - [Jan 14, 2024 – Configure ACME via Cloudflare DNS in Proxmox](20240114-pve-acme-cloudflare.md)
