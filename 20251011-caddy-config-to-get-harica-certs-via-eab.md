@@ -8,7 +8,7 @@ for internal servers without having to expose them to the internet.
 
 ```
 {
-    # Global configuration of certificate issuer
+	# Global configuration of certificate issuer
 	cert_issuer acme {
 		dir https://acme-v02.harica.gr/acme/.../directory
 		# External Account Binding credentials from HARICA
