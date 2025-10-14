@@ -30,6 +30,23 @@ xy.example.com {
 }
 ```
 
+Forward Proxy
+-------------
+
+Using EAB is useful if Caddy runs in an internal network. This, however, may
+mean that you cannot reach the internet (and thus Harica) without going through
+an HTTP forward proxy.
+
+You can make Caddy use a proxy for requesting the certificates by defining the
+`HTTP_PROXY` and `HTTPS_PROXY` environment variables.
+
+For example, if you run Caddy as Systemd service, edit `/etc/systemd/system/caddy.service.d/override.conf` and set
+```ini
+[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:3128"
+Environment="HTTPS_PROXY=http://proxy.example.com:3128"[lars@vm350 ~]$ cat /etc/systemd/system/caddy.service.d/override.conf
+```
+
 <time>
 Sat Oct 11 01:08:18 PM CEST 2025
 </time>
