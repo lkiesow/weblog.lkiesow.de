@@ -1,3 +1,4 @@
+- [Feb 20, 2026 – HAProxy + Caddy: Recommended Set-up](20260220-haproxy-caddy-recommended-setup/index.md)
 - [Jan 25, 2026 – HAProxy, Caddy, PROXY Protocol and X-Forwarded-For](20260125-haproxy-caddy-proxy-protocol-x-forwarded-for/index.md)
 - [Oct 11, 2025 – Using Caddy to get TLS certificates from Harica verified via EAB](20251011-caddy-config-to-get-harica-certs-via-eab.md)
 - [Sep 30, 2025 – Using Motorcomm YT6801 Gigabit Ethernet Controller in Proxmox](20250930-proxmox-yt6801.md)
