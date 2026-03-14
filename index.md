@@ -1,3 +1,4 @@
+- [Mar 14, 2026 – Update IP Address of Proxmox Server](2026-03-14-update-ip-address-on-pve.md)
 - [Feb 20, 2026 – HAProxy + Caddy: Recommended Set-up](20260220-haproxy-caddy-recommended-setup/index.md)
 - [Jan 25, 2026 – HAProxy, Caddy, PROXY Protocol and X-Forwarded-For](20260125-haproxy-caddy-proxy-protocol-x-forwarded-for/index.md)
 - [Oct 11, 2025 – Using Caddy to get TLS certificates from Harica verified via EAB](20251011-caddy-config-to-get-harica-certs-via-eab.md)
