@@ -17,7 +17,7 @@ Here is what you need to do once you got your EAB data which should look like th
 First, register your ACME account on Proxmox:
 
 ```sh
-❯ pvenode acme account register harica lars.kiesow@uni-osnabrueck.de
+❯ pvenode acme account register harica lars.kiesow@example.com
 Directory endpoints:
 0) Let's Encrypt V2 (https://acme-v02.api.letsencrypt.org/directory)
 1) Let's Encrypt V2 Staging (https://acme-staging-v02.api.letsencrypt.org/directory)
@@ -25,7 +25,7 @@ Directory endpoints:
 Enter selection: 2
 Enter custom URL: https://acme-v02.harica.gr/acme/…/directory
 
-Attempting to fetch Terms of Service from 'https://acme-v02.harica.gr/acme/…/directory'..
+Attempting to fetch Terms of Service from 'https://acme-v02.harica.gr/acme/…/directory'.
 Terms of Service: https://repo.harica.gr/documents/SA-ToU.pdf
 Do you agree to the above terms? [y|N]: y
 The CA requires external account binding.
@@ -48,6 +48,8 @@ Now that we have an account, we can use it to add domains for this node:
 
 If you need a certificate for multiple domans, you can separate the domains by semicolon:
 `domains="pve.example.com;pve.ex.com"`.
+
+Finally, we can now order the first certificate:
 
 ```sh
 ❯ pvenode acme cert order
