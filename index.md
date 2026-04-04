@@ -1,3 +1,4 @@
+- [Apr 04, 2026 – Disable System Bell in Linux](20260404-disable-system-bell-in-linux.md)
 - [Mar 17, 2026 – Proxmox TLS Certificates via EAB (HARICA)](20260317-proxmox-certificates-via-harica.md)
 - [Mar 14, 2026 – Update IP Address of Proxmox Server](20260314-update-ip-address-on-pve.md)
 - [Feb 20, 2026 – HAProxy + Caddy: Recommended Set-up](20260220-haproxy-caddy-recommended-setup/index.md)
