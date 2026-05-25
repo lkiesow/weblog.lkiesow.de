@@ -1,5 +1,5 @@
-Desktop freezes on 1 AMD Ryzen AI 7 350 with Radeon 860M
-========================================================
+Desktop freezes on AMD Ryzen AI 7 350 with Radeon 860M
+======================================================
 
 I finally replaced my good old ThinkPad T470s after years of happy companionship.
 
