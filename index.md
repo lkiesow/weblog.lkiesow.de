@@ -1,3 +1,4 @@
+- [May 25, 2026 – Desktop freezes on AMD Ryzen AI 7 350 with Radeon 860M](20260525-desktop-freezes-on-amdgpu.md)
 - [Apr 04, 2026 – Disable System Bell in Linux](20260404-disable-system-bell-in-linux.md)
 - [Mar 17, 2026 – Proxmox TLS Certificates via EAB (HARICA)](20260317-proxmox-certificates-via-harica.md)
 - [Mar 14, 2026 – Update IP Address of Proxmox Server](20260314-update-ip-address-on-pve.md)
