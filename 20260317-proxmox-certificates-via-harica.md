@@ -14,10 +14,25 @@ Here is what you need to do once you got your EAB data which should look like th
 - Key ID: *key_id*
 - HMAC Key: *hmac_key*
 
-First, register your ACME account on Proxmox:
+First, register your ACME account on Proxmox. Note that the `pvenode acme account
+register` command currently appears to have a bug in Proxmox. Use `pvesh` instead:
 
 ```sh
-❯ pvenode acme account register harica lars.kiesow@example.com
+❯ pvesh create /cluster/acme/account \
+    --contact admin@example.com \
+    --directory https://acme-v02.harica.gr/acme/<...>/directory \
+    --eab-kid <key id> \
+    --eab-hmac-key <key> \
+    --name harica \
+    --tos_url https://repo.harica.gr/documents/SA-ToU.pdf
+```
+
+<div style="opacity: 0.45;">
+
+Alternatively, if the bug is resolved, you can use the interactive method:
+
+```sh
+❯ pvenode acme account register harica admin@example.com
 Directory endpoints:
 0) Let's Encrypt V2 (https://acme-v02.api.letsencrypt.org/directory)
 1) Let's Encrypt V2 Staging (https://acme-staging-v02.api.letsencrypt.org/directory)
@@ -39,6 +54,8 @@ Registering ACME account..
 Registration successful, account URL: 'https://acme-v02.harica.gr/acme/…''
 Task OK
 ```
+
+</div>
 
 Now that we have an account, we can use it to add domains for this node:
 
