@@ -1,3 +1,4 @@
+- [Oct 04, 2026 – Prevent Claude from adding Co-Authored-By](./20261004-prevent-co-authored-by-claude.md)
 - [Jul 10, 2026 – Enable Firewall in Proxmox](20260710-proxmox-firewall-configuration.md)
 - [May 25, 2026 – Desktop freezes on AMD Ryzen AI 7 350 with Radeon 860M](20260525-desktop-freezes-on-amdgpu.md)
 - [Apr 04, 2026 – Disable System Bell in Linux](20260404-disable-system-bell-in-linux.md)
